@@ -1,3 +1,5 @@
+# --- !Ups
+
 CREATE TABLE users (
     id BIGSERIAL, 
     first_name VARCHAR(40) NOT NULL,
@@ -46,3 +48,7 @@ CREATE TABLE attendance (
    movie_id BIGINT,
    expense INTEGER
 );  
+
+# --- !Downs
+
+DROP TABLE users, beers, food, movies, meetings, attendance;
