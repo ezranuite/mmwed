@@ -10,10 +10,10 @@ object UserManager {
 
 	def findById(id: Long) = {
 		DB.withConnection { implicit c =>
-	      val result = SQL("SELECT id, name FROM users WHERE id = {id}")
+	      val result = SQL("SELECT * FROM users WHERE id = {id}")
 	      		.on("id" -> id).apply().head
 
-	      new User(result[Long]("id"), result[String]("name"))
+	      new User(result[Long]("id"), result[String]("first_name"), result[String]("last_name"), result[String]("email"), result[String]("password"), result[String]("phone"))
 	    }
     }
 }
