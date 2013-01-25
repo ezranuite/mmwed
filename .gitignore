@@ -6,11 +6,17 @@ logs
 !.gitignore
 
 # Ignore Play! working directory #
-db
+bin/
+data/
+db/
+dist/
+logs/
+test-result/
+lib/
+tmp/
+modules/
 eclipse
-lib
 log
-logs
 modules
 precompiled
 project/target
