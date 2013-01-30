@@ -3,11 +3,13 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
+GET     /                           controllers.Application.home
 
-POST    /login                      controllers.Application.loginAttempt
+POST    /login                      controllers.Auth.authenticate
 
-GET     /login                      controllers.Application.login
+GET     /login                      controllers.Auth.login
+
+GET     /logout                     controllers.Auth.logout
 
 GET     /user/:id                   controllers.Users.get(id:Long)
 
