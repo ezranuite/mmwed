@@ -13,5 +13,7 @@ GET     /logout                     controllers.Auth.logout
 
 GET     /user/:id                   controllers.Users.get(id:Long)
 
+GET     /meeting/:id                controllers.Meetings.get(id:Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

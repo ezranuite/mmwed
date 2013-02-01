@@ -1,0 +1,12 @@
+@(meeting:Meeting)
+
+@meeting.id
+@meeting.date
+
+@( meeting.movie match {
+  case Some(movie:Movie) => {
+    movie.name
+  }
+  case _ => 
+}
+)
