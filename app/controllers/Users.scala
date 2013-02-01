@@ -10,5 +10,4 @@ object Users extends Controller with Secured {
 	def get (id:Long) = withAuth { username => _ => 
 		Ok(views.html.users.view(UserManager.findById(id).firstName))
 	}
-
 }
