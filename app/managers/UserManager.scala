@@ -19,11 +19,11 @@ object UserManager {
 
   def findByEmail(email: String): User = {
     DB.withConnection { implicit c =>
-      SQL("SELECT id as user_id, password as user_password, first_name as user_first_name, last_name as user_last_name, email as user_email, phone as user_phone  FROM users WHERE email = {email}").on("email" -> email).apply().head
+      SQL("SELECT id as user_id, password as user_password, first_name as user_first_name, last_name as user_last_name, email as user_email, phone as user_phone FROM users WHERE email = {email}").on("email" -> email).apply().head
     }
   }
        
   def checkEmailPass( email: String, password: String ) = { DB.withConnection { implicit c => 
-    SQL("SELECT * FROM users WHERE email = {email} AND password = {password}").on("email" -> email).on("password" -> password).apply().size == 1
+    SQL("SELECT id as user_id, password as user_password, first_name as user_first_name, last_name as user_last_name, email as user_email, phone as user_phone FROM users WHERE email = {email} AND password = {password}").on("email" -> email).on("password" -> password).apply().size == 1
   }}
 }
