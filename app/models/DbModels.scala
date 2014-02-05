@@ -14,7 +14,18 @@ object User {
 
 case class Beer( id:Long, name:String, brewery:Option[String], style:Option[String], country:Option[String], state:Option[String] )
 
+object Beer {
+  implicit def Row2Beer( result: SqlRow ) = {
+    Beer(result[Long]("beer_id"), result[String]("beer_name"), result[Option[String]]("beer_brewery"), result[Option[String]]("beer_style"), result[Option[String]]("beer_country"), result[Option[String]]("beer_state"))
+  }
+}
 case class Food( id:Long, name:String)
+
+object Food {
+  implicit def Row2Food( result: SqlRow ) = {
+    Food(result[Long]("food_id"), result[String]("food_name"))
+  }
+}
 
 case class Movie( id:Long, name:String, watched:Option[Date], user:User, releaseDate:Option[Date], imdbUrl:Option[String] )
 
