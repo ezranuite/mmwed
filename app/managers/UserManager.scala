@@ -17,6 +17,14 @@ object UserManager {
     }
   }
 
+/*  def findAll(): List[User] = {
+    DB.withConnection { implicit c =>
+      SQL("""SELECT id as user_id, password as user_password, first_name as user_first_name, last_name as user_last_name, email as user_email, phone as user_phone
+               FROM users}"""
+      ).apply()
+    }
+  }*/
+
   def findByEmail(email: String): User = {
     DB.withConnection { implicit c =>
       SQL("SELECT id as user_id, password as user_password, first_name as user_first_name, last_name as user_last_name, email as user_email, phone as user_phone FROM users WHERE email = {email}").on("email" -> email).apply().head
