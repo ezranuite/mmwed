@@ -1,0 +1,49 @@
+@(userForm: Form[UserData])(implicit flash: Flash)
+
+<html>
+<head>
+    <title>MMWed - Add User</title>
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
+</head>
+<body>
+
+<header>
+    <a href="@routes.Application.home" id="logo">Home</a>
+</header>
+
+@helper.form(action = routes.Users.submit) {
+
+    <h1>Sign in</h1>
+
+    @userForm.globalError.map { error =>
+    <p class="error">
+        @error.message
+    </p>
+    }
+
+    @flash.get("success").map { message =>
+    <p class="success">
+        @message
+    </p>
+    }
+    <p>
+        @helper.inputText(userForm("firstName"))
+    </p>
+    <p>
+        @helper.inputText(userForm("lastName"))
+    </p>
+    <p>
+        @helper.inputText(userForm("email"))
+    </p>
+    <p>
+        @helper.inputText(userForm("phone"))
+    </p>
+    <p>
+        <button type="submit" id="createbutton">Create</button>
+    </p>
+
+}
+</body>
+</html>
+

@@ -11,6 +11,12 @@ GET     /login                      controllers.Auth.login
 
 GET     /logout                     controllers.Auth.logout
 
+GET     /user                       controllers.Users.list
+
+GET     /user/add                   controllers.Users.form
+
+POST    /user                       controllers.Users.submit
+
 GET     /user/:id                   controllers.Users.get(id:Long)
 
 GET     /meeting/:id                controllers.Meetings.get(id:Long)

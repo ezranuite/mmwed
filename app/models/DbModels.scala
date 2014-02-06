@@ -4,11 +4,15 @@ import java.util.Date
 import anorm._
 import play.api.db.DB
 
-case class User( id:Long, firstName:String, lastName:String, email:String, password:String, phone:String)
+case class User( id:Option[Long], firstName:String, lastName:String, email:String, password:String, phone:Option[String])
 
 object User {
   implicit def Row2User( result: SqlRow ) = {
-    User(result[Long]("user_id"), result[String]("user_first_name"), result[String]("user_last_name"), result[String]("user_email"), result[String]("user_password"), result[String]("user_phone"))
+    User(result[Option[Long]]("user_id"), result[String]("user_first_name"), result[String]("user_last_name"), result[String]("user_email"), result[String]("user_password"), result[Option[String]]("user_phone"))
+  }
+
+  implicit def Rows2User ( result: List[SqlRow] ):List[User] = {
+    result.map(Row2User)
   }
 }
 
